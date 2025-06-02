@@ -36,9 +36,16 @@ const AdminPanel = ({ isOpen, onClose }: AdminPanelProps) => {
     onClose();
   };
 
+  const handleClose = () => {
+    setIsAuthenticated(false);
+    setPassword("");
+    setError("");
+    onClose();
+  };
+
   if (!isAuthenticated) {
     return (
-      <Dialog open={isOpen} onOpenChange={onClose}>
+      <Dialog open={isOpen} onOpenChange={handleClose}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="font-playfair text-2xl text-center">
@@ -56,7 +63,7 @@ const AdminPanel = ({ isOpen, onClose }: AdminPanelProps) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Введите пароль"
-                onKeyPress={(e) => e.key === "Enter" && handleLogin()}
+                onKeyDown={(e) => e.key === "Enter" && handleLogin()}
                 className="w-full"
               />
             </div>
@@ -77,7 +84,7 @@ const AdminPanel = ({ isOpen, onClose }: AdminPanelProps) => {
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-4xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <div className="flex items-center justify-between">
