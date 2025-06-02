@@ -85,10 +85,10 @@ const AdminPanel = ({ isOpen, onClose }: AdminPanelProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-4xl max-h-[80vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-4xl max-h-[80vh] overflow-y-auto bg-white">
         <DialogHeader>
           <div className="flex items-center justify-between">
-            <DialogTitle className="font-playfair text-2xl">
+            <DialogTitle className="font-playfair text-2xl text-gray-900">
               🎭 Панель управления театром
             </DialogTitle>
             <Button onClick={handleLogout} variant="outline" size="sm">
@@ -99,63 +99,87 @@ const AdminPanel = ({ isOpen, onClose }: AdminPanelProps) => {
         </DialogHeader>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+          <Card className="bg-white border border-gray-200">
+            <CardHeader className="bg-gray-50">
+              <CardTitle className="flex items-center gap-2 text-gray-900">
                 <Icon name="Plus" size={20} />
                 Добавить спектакль
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <Input placeholder="Название спектакля" />
-              <Input placeholder="Описание" />
-              <Input type="date" />
-              <Input type="time" />
-              <Input type="number" placeholder="Цена (₽)" />
-              <Input type="number" placeholder="Количество мест" />
-              <Input placeholder="Жанр" />
-              <Input placeholder="URL изображения" />
-              <Button className="w-full bg-theater-burgundy hover:bg-theater-burgundy/90">
+            <CardContent className="space-y-4 p-6">
+              <Input placeholder="Название спектакля" className="bg-white" />
+              <Input placeholder="Описание" className="bg-white" />
+              <Input type="date" className="bg-white" />
+              <Input type="time" className="bg-white" />
+              <Input
+                type="number"
+                placeholder="Цена (₽)"
+                className="bg-white"
+              />
+              <Input
+                type="number"
+                placeholder="Количество мест"
+                className="bg-white"
+              />
+              <Input placeholder="Жанр" className="bg-white" />
+              <Input placeholder="URL изображения" className="bg-white" />
+              <Button className="w-full bg-theater-burgundy hover:bg-theater-burgundy/90 text-white">
+                <Icon name="Plus" className="mr-2" size={16} />
                 Добавить спектакль
               </Button>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+          <Card className="bg-white border border-gray-200">
+            <CardHeader className="bg-gray-50">
+              <CardTitle className="flex items-center gap-2 text-gray-900">
                 <Icon name="BarChart" size={20} />
                 Статистика продаж
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6">
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span>Всего билетов продано:</span>
+                  <span className="text-gray-700">Всего билетов продано:</span>
                   <span className="font-bold text-theater-burgundy">0</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span>Общая выручка:</span>
+                  <span className="text-gray-700">Общая выручка:</span>
                   <span className="font-bold text-theater-burgundy">0 ₽</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span>Активных спектаклей:</span>
+                  <span className="text-gray-700">Активных спектаклей:</span>
                   <span className="font-bold text-theater-burgundy">0</span>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="md:col-span-2">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+          <Card className="md:col-span-2 bg-white border border-gray-200">
+            <CardHeader className="bg-gray-50">
+              <CardTitle className="flex items-center gap-2 text-gray-900">
                 <Icon name="List" size={20} />
                 Управление спектаклями
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="text-center py-8 text-gray-500">
-                Пока нет добавленных спектаклей
+            <CardContent className="p-6">
+              <div className="space-y-4">
+                <div className="flex gap-2 mb-4">
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <Icon name="Edit" size={16} />
+                    Редактировать
+                  </Button>
+                  <Button
+                    variant="destructive"
+                    className="flex items-center gap-2"
+                  >
+                    <Icon name="Trash2" size={16} />
+                    Удалить выбранные
+                  </Button>
+                </div>
+                <div className="text-center py-8 text-gray-500 bg-gray-50 rounded-lg">
+                  Пока нет добавленных спектаклей
+                </div>
               </div>
             </CardContent>
           </Card>
